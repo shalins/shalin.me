@@ -1,5 +1,119 @@
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'FT88-Bold';
+  src: url('./fonts/FT88-Bold.woff2') format('woff2'),
+       url('./fonts/FT88-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FT88-Serif';
+  src: url('./fonts/FT88-Serif.woff2') format('woff2'),
+       url('./fonts/FT88-Serif.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FT88-Regular';
+  src: url('./fonts/FT88-Regular.woff2') format('woff2'),
+       url('./fonts/FT88-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SpaceMono-Regular';
+  src: url('./fonts/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SpaceMono-Bold';
+  src: url('./fonts/SpaceMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SpaceMono-BoldItalic';
+  src: url('./fonts/SpaceMono-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'SpaceMono-Italic';
+  src: url('./fonts/SpaceMono-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+.font-ft88-bold {
+  @apply font-bold;
+  font-family: 'FT88-Bold', sans-serif;
+}
+
+.font-ft88-serif {
+  font-family: 'FT88-Serif', serif;
+}
+
+.font-ft88-regular {
+  font-family: 'FT88-Regular', sans-serif;
+}
+
+.font-mono-regular {
+  font-family: 'SpaceMono-Regular', monospace;
+}
+
+.font-mono-italic {
+  font-family: 'SpaceMono-Italic', monospace;
+}
+
+.font-ft88-bold-italic {
+  font-family: 'SpaceMono-BoldItalic', monospace;
+}
+
+.font-ft88-bold {
+  font-family: 'SpaceMono-Bold', monospace;
+}
+
+body {
+  font-family: 'SpaceMono-Regular', monospace;
+}
+
+
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  transform-origin: left top;
+}
+
+a {
+  @apply text-sky-500 no-underline relative;
+}
+
+a::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px; /* Adjust thickness as needed */
+  background-color: currentColor;
+  position: absolute;
+  bottom: -1px; /* Adjust space between text and underline */
+  left: 0;
+  right: 0;
+}
+
+a:hover {
+  @apply bg-red-500;
+  color: white; /* Change text color on hover if needed */
+}
+
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;
