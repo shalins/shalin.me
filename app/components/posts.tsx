@@ -16,20 +16,30 @@ export function Posts() {
           return 1;
         })
         .map((post) => (
-          <Link
-            key={post.slug}
-            className="flex flex-col space-y-1 mb-4"
-            href={`/writings/${post.slug}`}
-          >
-            <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
-              <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
-                {formatDate(post.metadata.publishedAt, false)}
-              </p>
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-                {post.metadata.title}
-              </p>
-            </div>
-          </Link>
+          // <div className="w-full flex flex-col flex-grow md:flex-row space-x-0 md:space-x-2">
+          //   <Link
+          //     key={post.slug}
+          //     className="flex flex-col flex-grow space-y-1 mb-4"
+          //     href={`/writings/${post.slug}`}
+          //   >
+          //     <p className="tracking-tight">{post.metadata.title}</p>
+          //   </Link>
+          //   <p className="w-[200px] tabular-nums">
+          //     {formatDate(post.metadata.publishedAt, false)}
+          //   </p>
+          // </div>
+          <div className="w-full flex justify-between items-center mb-4">
+            <Link
+              key={post.slug}
+              className="flex-grow"
+              href={`/writings/${post.slug}`}
+            >
+              <p className="tracking-tight">{post.metadata.title}</p>
+            </Link>
+            <p className="tabular-nums">
+              {formatDate(post.metadata.publishedAt, false)}
+            </p>
+          </div>
         ))}
     </div>
   );

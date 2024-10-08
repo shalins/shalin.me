@@ -8,13 +8,28 @@
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/css-app_global_css-node_modules_pnpm_next_14_2_0-canary_62_react-dom_18_2_0_react_18_2_0_node-c1ecb8.css",
+      "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
     "/not-found": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
+    ],
+    "/atalier/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/atalier/page.js"
+    ],
+    "/writings/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/writings/page.js"
+    ],
+    "/writings/[slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/writings/[slug]/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
