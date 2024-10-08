@@ -95,7 +95,7 @@ a:hover:not(.post, .social) {
 }
 
 a.social {
-  @apply text-neutral-500 no-underline relative border-b-2 border-current transition-all duration-l00 ease-in-out;
+  @apply text-neutral-500 no-underline relative border-b-2 border-current transition-all duration-100 ease-in-out;
 }
 
 

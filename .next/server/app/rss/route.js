@@ -1,0 +1,14 @@
+"use strict";(()=>{var e={};e.id=575,e.ids=[575],e.modules={399:e=>{e.exports=require("next/dist/compiled/next-server/app-page.runtime.prod.js")},517:e=>{e.exports=require("next/dist/compiled/next-server/app-route.runtime.prod.js")},2048:e=>{e.exports=require("fs")},5315:e=>{e.exports=require("path")},6996:(e,t,r)=>{r.r(t),r.d(t,{originalPathname:()=>g,patchFetch:()=>h,requestAsyncStorage:()=>d,routeModule:()=>u,serverHooks:()=>c,staticGenerationAsyncStorage:()=>m});var n={};r.r(n),r.d(n,{GET:()=>p});var a=r(4812),i=r(1284),s=r(9426),o=r(1523),l=r(3543);async function p(){let e=(await (0,l.J)()).sort((e,t)=>new Date(e.metadata.publishedAt)>new Date(t.metadata.publishedAt)?-1:1).map(e=>`<item>
+          <title>${e.metadata.title}</title>
+          <link>${o.F}/writings/${e.slug}</link>
+          <description>${e.metadata.summary||""}</description>
+          <pubDate>${new Date(e.metadata.publishedAt).toUTCString()}</pubDate>
+        </item>`).join("\n");return new Response(`<?xml version="1.0" encoding="UTF-8" ?>
+  <rss version="2.0">
+    <channel>
+        <title>My Portfolio</title>
+        <link>${o.F}</link>
+        <description>This is my portfolio RSS feed</description>
+        ${e}
+    </channel>
+  </rss>`,{headers:{"Content-Type":"text/xml"}})}let u=new a.AppRouteRouteModule({definition:{kind:i.x.APP_ROUTE,page:"/rss/route",pathname:"/rss",filename:"route",bundlePath:"app/rss/route"},resolvedPagePath:"/mnt/c/Users/shalin/dev/shalin.me/app/rss/route.ts",nextConfigOutput:"",userland:n}),{requestAsyncStorage:d,staticGenerationAsyncStorage:m,serverHooks:c}=u,g="/rss/route";function h(){return(0,s.patchFetch)({serverHooks:c,staticGenerationAsyncStorage:m})}},1523:(e,t,r)=>{r.d(t,{F:()=>n}),r(3543);let n="https://shalin.me"},3543:(e,t,r)=>{r.d(t,{J:()=>o,p:()=>l});var n=r(2048),a=r.n(n),i=r(5315),s=r.n(i);function o(){var e,t;return(t=e=s().join(process.cwd(),"app","writings","posts"),a().readdirSync(t).filter(e=>".mdx"===s().extname(e))).map(t=>{var r,n;let i,o,l,p,u;let{metadata:d,content:m}=(r=s().join(e,t),n=a().readFileSync(r,"utf-8"),o=(i=/---\s*([\s\S]*?)\s*---/).exec(n)[1],l=n.replace(i,"").trim(),p=o.trim().split("\n"),u={},p.forEach(e=>{let[t,...r]=e.split(": "),n=r.join(": ").trim();n=n.replace(/^['"](.*)['"]$/,"$1"),u[t.trim()]=n}),{metadata:u,content:l});return{metadata:d,slug:s().basename(t,s().extname(t)),content:m}})}function l(e,t=!1){let r=new Date;e.includes("T")||(e=`${e}T00:00:00`);let n=new Date(e),a=r.getFullYear()-n.getFullYear(),i=r.getMonth()-n.getMonth(),s=r.getDate()-n.getDate(),o="";o=a>0?`${a}y ago`:i>0?`${i}mo ago`:s>0?`${s}d ago`:"Today";let l=n.toLocaleString("en-us",{month:"long",day:"numeric",year:"numeric"});return t?`${l} (${o})`:l}},4812:(e,t,r)=>{e.exports=r(517)}};var t=require("../../webpack-runtime.js");t.C(e);var r=e=>t(t.s=e),n=t.X(0,[755],()=>r(6996));module.exports=n})();

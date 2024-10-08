@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <rss version="2.0">
+    <channel>
+        <title>My Portfolio</title>
+        <link>https://shalin.me</link>
+        <description>This is my portfolio RSS feed</description>
+        <item>
+          <title>2023 Wrapped</title>
+          <link>https://shalin.me/writings/wrapped-2023</link>
+          <description>Shalin Shah 2023 Wrapped</description>
+          <pubDate>Sun, 07 Jan 2024 00:00:00 GMT</pubDate>
+        </item>
+<item>
+          <title>2022 Wrapped</title>
+          <link>https://shalin.me/writings/wrapped-2022</link>
+          <description>Shalin Shah 2022 Wrapped</description>
+          <pubDate>Mon, 16 Jan 2023 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+  </rss>

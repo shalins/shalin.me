@@ -1,6 +1,11 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
   "/page": "app/page.js",
-  "/writings/page": "app/writings/page.js",
+  "/rss/route": "app/rss/route.js",
+  "/og/route": "app/og/route.js",
+  "/writings/[slug]/page": "app/writings/[slug]/page.js",
   "/atalier/page": "app/atalier/page.js",
-  "/writings/[slug]/page": "app/writings/[slug]/page.js"
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/writings/page": "app/writings/page.js"
 }
