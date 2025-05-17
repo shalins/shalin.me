@@ -1,8 +1,16 @@
 import { baseUrl } from "app/sitemap";
 import { getPosts } from "app/writings/utils";
+import { getAtalierPosts } from "app/atalier/utils";
 
 export async function GET() {
-  let allPosts = await getPosts();
+  let writingPosts = await getPosts();
+  let atalierPosts = await getAtalierPosts();
+  
+  // Combine both types of posts with the appropriate URL prefix
+  const allPosts = [
+    ...writingPosts.map(post => ({ ...post, urlPrefix: '/writings' })),
+    ...atalierPosts.map(post => ({ ...post, urlPrefix: '/atalier' }))
+  ];
 
   const itemsXml = allPosts
     .sort((a, b) => {
@@ -15,7 +23,7 @@ export async function GET() {
       (post) =>
         `<item>
           <title>${post.metadata.title}</title>
-          <link>${baseUrl}/writings/${post.slug}</link>
+          <link>${baseUrl}${post.urlPrefix}/${post.slug}</link>
           <description>${post.metadata.summary || ""}</description>
           <pubDate>${new Date(
             post.metadata.publishedAt
@@ -27,9 +35,9 @@ export async function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0">
     <channel>
-        <title>My Portfolio</title>
+        <title>Shalin Shah</title>
         <link>${baseUrl}</link>
-        <description>This is my portfolio RSS feed</description>
+        <description>Writings and projects by Shalin Shah</description>
         ${itemsXml}
     </channel>
   </rss>`;

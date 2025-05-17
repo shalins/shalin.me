@@ -1,19 +1,17 @@
 import { notFound } from "next/navigation";
-import { CustomMDX } from "app/components/mdx";
-import { formatDate, getPosts } from "app/writings/utils";
+import { MDXPage } from "app/components/mdx-page";
+import { getPosts } from "../utils";
 import { baseUrl } from "app/sitemap";
-import { TableOfContents } from "app/components/table-of-contents";
 
 export async function generateStaticParams() {
   let posts = getPosts();
-
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
 export async function generateMetadata({ params }) {
-  const awaitedParams = await params; // Await params object
+  const awaitedParams = await params;
   let post = getPosts().find((post) => post.slug === awaitedParams.slug);
   if (!post) {
     return;
@@ -37,7 +35,7 @@ export async function generateMetadata({ params }) {
       description,
       type: "article",
       publishedTime,
-      url: `${baseUrl}/writing/${post.slug}`,
+      url: `${baseUrl}/writings/${post.slug}`,
       images: [
         {
           url: ogImage,
@@ -53,52 +51,21 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function Writings({ params }) {
-  const awaitedParams = await params; // Await params object
+export default async function Post({ params }) {
+  const awaitedParams = await params;
   let post = getPosts().find((post) => post.slug === awaitedParams.slug);
-
-  // let post = getPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
   }
 
   return (
-    <section>
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Posting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${baseUrl}/writing/${post.slug}`,
-            author: {
-              "@type": "Person",
-              name: "My Portfolio",
-            },
-          }),
-        }}
-      />
-      <h1 className="title font-semibold text-2xl tracking-tighter">
-        {post.metadata.title}
-      </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600">
-          {formatDate(post.metadata.publishedAt)}
-        </p>
-      </div>
-      <TableOfContents source={post.content} />
-      <article className="prose">
-        <CustomMDX source={post.content} />
-      </article>
-    </section>
+    <MDXPage
+      content={post.content}
+      metadata={post.metadata}
+      slug={post.slug}
+      type="article"
+      urlPrefix="/writings"
+    />
   );
 }

@@ -27,7 +27,7 @@ export default function Atalier() {
     {
       name: "Iris",
       description: "Smart campus assistant for college students",
-      link: "/writings/iris",
+      link: "/atalier/iris",
     },
     {
       name: "Lumos",

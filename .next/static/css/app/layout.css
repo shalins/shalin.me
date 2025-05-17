@@ -586,6 +586,9 @@
   .static\/ {
     position: static;
   }
+  .static\/chunks\/app\/atalier\/\[slug\]\/page {
+    position: static;
+  }
   .static\/chunks\/app\/writings\/\[slug\]\/page {
     position: static;
   }
@@ -1012,6 +1015,10 @@
   .text-2xl {
     font-size: var(--font-size-2xl, 1.5rem);
     line-height: var(--font-size-2xl--line-height, 2rem);
+  }
+  .text-3xl {
+    font-size: var(--font-size-3xl, 1.875rem);
+    line-height: var(--font-size-3xl--line-height, 2.25rem);
   }
   .text-4xl {
     font-size: var(--font-size-4xl, 2.25rem);
