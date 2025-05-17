@@ -3,6 +3,13 @@ import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { highlight } from "sugar-high";
 import React from "react";
+import { lazy } from "react";
+import dynamic from 'next/dynamic';
+
+const LinkPreview = dynamic(() => import('./preview/link-preview'), {
+  loading: () => <div className="animate-pulse h-32 bg-gray-100 rounded-lg" />,
+  ssr: false
+});
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -29,9 +36,27 @@ function Table({ data }) {
 function CustomLink(props) {
   let href = props.href;
 
+  // Check if this is a GitHub PR link
+  if (href.match(/github\.com\/[^/]+\/[^/]+\/pull\/\d+/)) {
+    const GitHubPreview = dynamic(() => import('./preview/gh-preview'), {
+      loading: () => <div className="animate-pulse h-32 bg-gray-100 rounded-lg" />,
+      ssr: false
+    });
+    return <GitHubPreview url={href} />;
+  }
+
+  // Check if this link should be rendered as a preview
+  if (props.title === 'preview') {
+    const LinkPreview = dynamic(() => import('./preview/link-preview'), {
+      loading: () => <div className="animate-pulse h-32 bg-gray-100 rounded-lg" />,
+      ssr: false
+    });
+    return <LinkPreview url={href} />;
+  }
+
   if (href.startsWith("/")) {
     return (
-      <Link href={href} {...props}>
+      <Link href={href} {...props} className="mdx-link">
         {props.children}
       </Link>
     );
@@ -41,7 +66,7 @@ function CustomLink(props) {
     return <a {...props} />;
   }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props} />;
+  return <a target="_blank" rel="noopener noreferrer" {...props} className="mdx-link" />;
 }
 
 function RoundedImage(props) {
@@ -106,6 +131,7 @@ let components = {
   code: Code,
   Table,
   blockquote: Quote,
+  strong: ({ children }) => <strong style={{ fontFamily: 'SpaceMono-Bold, monospace' }}>{children}</strong>,
 };
 
 export function CustomMDX(props) {

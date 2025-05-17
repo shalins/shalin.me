@@ -35,14 +35,34 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-    other: [
-      { rel: "icon", url: "/favicon-32x32.png", sizes: "32x32" },
-      { rel: "icon", url: "/android-chrome-192x192.png", sizes: "192x192" },
-      { rel: "icon", url: "/android-chrome-512x512.png", sizes: "512x512" },
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
     ],
+    shortcut: { url: "/favicon-96x96.png" },
+    apple: {
+      url: "/apple-touch-icon.png",
+      type: "image/png"
+    },
+    other: [
+      {
+        rel: "manifest",
+        url: "/site.webmanifest"
+      },
+      {
+        rel: "icon",
+        url: "/web-app-manifest-192x192.png",
+        sizes: "192x192",
+        type: "image/png"
+      },
+      {
+        rel: "icon",
+        url: "/web-app-manifest-512x512.png",
+        sizes: "512x512",
+        type: "image/png"
+      }
+    ]
   },
   manifest: "/site.webmanifest",
 };
@@ -55,7 +75,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cx("text-black ")}>
+    <html lang="en" className={cx("text-black light")}>
       <body className="antialiased max-w-2xl mx-4 mt-8 lg:mx-auto">
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
           <Navbar />

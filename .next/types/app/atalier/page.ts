@@ -1,4 +1,4 @@
-// File: /mnt/c/Users/shalin/dev/shalin.me/app/atalier/page.tsx
+// File: /Users/shalinshah/dev/shalin.me/app/atalier/page.tsx
 import * as entry from '../../../../app/atalier/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

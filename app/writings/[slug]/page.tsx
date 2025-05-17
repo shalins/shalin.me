@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "app/components/mdx";
 import { formatDate, getPosts } from "app/writings/utils";
 import { baseUrl } from "app/sitemap";
+import { TableOfContents } from "app/components/table-of-contents";
 
 export async function generateStaticParams() {
   let posts = getPosts();
@@ -90,10 +91,11 @@ export default async function Writings({ params }) {
         {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        <p className="text-sm text-neutral-600">
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>
+      <TableOfContents source={post.content} />
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>

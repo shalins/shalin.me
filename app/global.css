@@ -83,16 +83,27 @@
 
 body {
   font-family: 'SpaceMono-Regular', monospace;
+  background-color: #FAF6E9
 }
 
-a:not(.post, .social) {
+a:not(.post, .social, .anchor, .toc-link, .rich-link) {
   @apply text-sky-500 no-underline relative border-b-2 border-current transition-all duration-50 ease-in-out;
 }
 
-a:hover:not(.post, .social) {
+a:hover:not(.post, .social, .anchor, .toc-link, .rich-link) {
   @apply bg-red-500;
-  color: white; /* Change text color on hover if needed */
+  color: white;
 }
+
+
+a.rich-link {
+  @apply text-sky-500 no-underline relative border-b-8 border-current transition-all duration-50 ease-in-out;
+}
+
+a.rich-link:hover {
+  @apply border-red-500;
+}
+
 
 a.social {
   @apply text-neutral-500 no-underline relative border-b-2 border-current transition-all duration-100 ease-in-out;
@@ -125,18 +136,6 @@ a.post:hover {
   --sh-entity: #e25a1c;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
-  html {
-    color-scheme: dark;
-  }
-}
-
 html {
   min-width: 360px;
 }
@@ -155,12 +154,16 @@ html {
   @apply visible;
 }
 
-.prose a {
-  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+.prose a:not(.post, .social, .anchor, .toc-link) {
+  @apply transition-all;
+}
+
+.prose a.mdx-link {
+  @apply no-underline;
 }
 
 .prose .anchor:after {
-  @apply text-neutral-300 dark:text-neutral-700;
+  @apply text-neutral-300;
   content: '#';
 }
 
@@ -169,7 +172,7 @@ html {
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  @apply bg-neutral-50 rounded-lg overflow-x-auto border border-neutral-200 py-2 px-3 text-sm;
 }
 
 .prose code {
@@ -192,7 +195,7 @@ html {
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
+  @apply my-4 text-neutral-800;
 }
 
 .prose h1 {
@@ -200,7 +203,7 @@ html {
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-2xl font-medium tracking-tight mt-6 mb-2;
 }
 
 .prose h3 {
@@ -271,4 +274,53 @@ p.new-paragraph::before {
   font-size: 1.5rem; 
   font-weight: 500; 
   font-family: "ft88-serif", serif; 
+}
+
+.toc {
+  position: relative;
+}
+
+.toc ul {
+  position: relative;
+  /* padding-left: 1rem; */
+}
+
+.toc ul::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  @apply bg-sky-500;
+}
+
+.toc li {
+  position: relative;
+  padding-left: 1rem;
+
+}
+
+.toc li:hover {
+  @apply bg-neutral-200;
+}
+
+.toc li:hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  @apply bg-red-500;
+}
+
+.toc a.toc-link {
+  display: block;
+  padding: 0.25rem 0rem;
+  @apply text-sky-500 no-underline border-0 transition-colors;
+}
+
+.toc li:hover a.toc-link {
+  @apply text-neutral-900;
 }
