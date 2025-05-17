@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import PreviewWrapper from './preview-wrapper';
 
 interface MetaData {
   title: string;
@@ -19,6 +20,17 @@ export default function LinkPreview({ url }: { url: string }) {
       try {
         const response = await fetch(`/api/metadata?url=${encodeURIComponent(url)}`);
         const data = await response.json();
+        
+        // Handle relative image paths
+        if (data.image && data.image.startsWith('/') && !data.image.startsWith('//')) {
+          try {
+            const urlObj = new URL(url);
+            data.image = `${urlObj.protocol}//${urlObj.hostname}${data.image}`;
+          } catch (e) {
+            console.error('Failed to parse URL for relative image path', e);
+          }
+        }
+        
         setMetadata(data);
       } catch (error) {
         console.error('Error fetching metadata:', error);
@@ -30,39 +42,44 @@ export default function LinkPreview({ url }: { url: string }) {
     fetchMetadata();
   }, [url]);
 
-  if (loading) {
-    return <div className="animate-pulse h-32 bg-gray-100 rounded-lg"></div>;
-  }
-
-  if (!metadata) {
-    return <a href={url} className="text-sky-500 hover:text-sky-600">{url}</a>;
-  }
+  const linkIcon = (
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="fill-none">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+    </svg>
+  );
 
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block no-underline border rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200 my-4"
+    <PreviewWrapper
+      url={url}
+      icon={linkIcon}
+      header={metadata ? new URL(url).hostname : ''}
+      loading={loading}
+      error={!metadata}
+      contentPadding={false}
     >
-      <div className="flex items-center p-4">
-        <div className="flex-grow">
-          <h4 className="text-gray-900 ">{metadata.title}</h4>
-          <p className="text-gray-600 text-sm line-clamp-2">{metadata.description}</p>
-          <p className="text-gray-400 text-xs mt-2">{new URL(url).hostname}</p>
-        </div>
-        {metadata.image && (
-          <div className="ml-4 flex-shrink-0">
-            <Image
-              src={metadata.image}
-              alt={metadata.title}
-              width={1000}
-              height={400}
-              className="rounded object-cover"
-            />
+      {metadata && (
+        <div className="flex">
+          <div className="flex-grow w-[60%] pr-4">
+            <h3 className="font-medium text-gray-900">{metadata.title}</h3>
+            <p className="text-gray-600 text-sm mt-2 line-clamp-2">{metadata.description}</p>
           </div>
-        )}
-      </div>
-    </a>
+          
+          {metadata.image && (
+            <div className="w-[40%] border-l flex">
+              <div className="relative w-full min-h-[120px]">
+                <Image
+                  src={metadata.image}
+                  alt={metadata.title}
+                  fill
+                  className="object-cover"
+                  sizes="40vw"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </PreviewWrapper>
   );
 } 

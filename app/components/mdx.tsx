@@ -7,7 +7,19 @@ import { lazy } from "react";
 import dynamic from 'next/dynamic';
 
 const LinkPreview = dynamic(() => import('./preview/link-preview'), {
-  loading: () => <div className="animate-pulse h-32 bg-gray-100 rounded-lg" />,
+  loading: () => <div className="block border overflow-hidden my-2 bg-[#F7F0DD] animate-pulse h-32" />,
+  ssr: false
+});
+
+// Import the ImageGallery component
+const ImageGallery = dynamic(() => import('./image-gallery'), {
+  loading: () => <div className="block border overflow-hidden my-2 bg-[#F7F0DD] animate-pulse h-32" />,
+  ssr: false
+});
+
+// Import the AudioPlayer component
+const AudioPlayer = dynamic(() => import('./audio-player'), {
+  loading: () => <div className="block border overflow-hidden my-2 bg-[#F7F0DD] animate-pulse h-10" />,
   ssr: false
 });
 
@@ -39,7 +51,7 @@ function CustomLink(props) {
   // Check if this is a GitHub PR link
   if (href.match(/github\.com\/[^/]+\/[^/]+\/pull\/\d+/)) {
     const GitHubPreview = dynamic(() => import('./preview/gh-preview'), {
-      loading: () => <div className="animate-pulse h-32 bg-gray-100 rounded-lg" />,
+      loading: () => <div className="block border overflow-hidden my-2 bg-[#F7F0DD] animate-pulse h-32" />,
       ssr: false
     });
     return <GitHubPreview url={href} />;
@@ -48,7 +60,7 @@ function CustomLink(props) {
   // Check if this link should be rendered as a preview
   if (props.title === 'preview') {
     const LinkPreview = dynamic(() => import('./preview/link-preview'), {
-      loading: () => <div className="animate-pulse h-32 bg-gray-100 rounded-lg" />,
+      loading: () => <div className="block border overflow-hidden my-2 bg-[#F7F0DD] animate-pulse h-32" />,
       ssr: false
     });
     return <LinkPreview url={href} />;
@@ -132,6 +144,8 @@ let components = {
   Table,
   blockquote: Quote,
   strong: ({ children }) => <strong style={{ fontFamily: 'SpaceMono-Bold, monospace' }}>{children}</strong>,
+  ImageGallery,
+  AudioPlayer,
 };
 
 export function CustomMDX(props) {

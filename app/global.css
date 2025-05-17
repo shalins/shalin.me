@@ -83,7 +83,7 @@
 
 body {
   font-family: 'SpaceMono-Regular', monospace;
-  background-color: #FAF6E9
+  background-color: #FAF6E9; /* cream-300 */
 }
 
 a:not(.post, .social, .anchor, .toc-link, .rich-link) {
@@ -278,11 +278,11 @@ p.new-paragraph::before {
 
 .toc {
   position: relative;
+  background-color: #F7F0DD;
 }
 
 .toc ul {
   position: relative;
-  /* padding-left: 1rem; */
 }
 
 .toc ul::before {
@@ -302,7 +302,8 @@ p.new-paragraph::before {
 }
 
 .toc li:hover {
-  @apply bg-neutral-200;
+  /* @apply bg-neutral-200; */
+  background-color: #F1E8CF;
 }
 
 .toc li:hover::before {

@@ -9,20 +9,20 @@ export default function Atalier() {
     {
       name: "Voice",
       description: "Used by millions of blind people to read everyday things",
-      link: "https://apps.apple.com/us/app/voice-ocr-document-reader/id903772588",
+      link: "/atalier/voice",
     },
   ];
 
   const retiredProjects = [
     {
       name: "Spacebar",
-      description: "Immersive 3D world to collaborate on projects online",
-      link: "https://spacebar.build",
+      description: "Immersive 3D world to build with friends online",
+      link: "/atalier/spacebar",
     },
     {
       name: "CompoNet",
       description: "Visualize & survey millions of passive components",
-      link: "https://compo-net.org",
+      link: "/atalier/componet",
     },
     {
       name: "Iris",
@@ -31,11 +31,12 @@ export default function Atalier() {
     },
     {
       name: "Lumos",
-      description: "Automated eye-disease screening kit"
+      description: "Automated eye-disease screening kit",
+      link: "/atalier/lumos",
     },
     {
       name: "Raspresso",
-      description: "Software-driven espresso machine built from scratch"
+      description: "Software-driven espresso machine built from scratch",
     },
     {
       name: "Close",
@@ -52,12 +53,13 @@ export default function Atalier() {
     {
       name: "MiddleSchoolNotes",
       description: "Comprehensive notes for dozens of subjects",
+      link: "/atalier/middle-school-notes",
     },
   ];
 
   return (
     <section>
-      <h1 className="font-semibold text-lg mb-8">l'Atalier</h1>
+      <h1 className="font-semibold text-lg mb-8">l'atalier</h1>
       <p className="mb-4">
         Starting with a website I built when I was 12, I've been lucky to
         indulge my natural curiosity over the past decade+ through the hundreds
@@ -66,9 +68,9 @@ export default function Atalier() {
 
       <p>
         These days, I'm spending my hours trying to build a lasting company, so I'm
-        not able to spend the time I used to tinkering on side projects. When I
-        do, I find my curiosity drawn more towards non-software projects like
-        learning a new language, playing sports, exploring a new country, or making music.
+        not able to spend the time I used to be able to tinkering on side projects. 
+        When I do, I find my curiosity drawn more towards non-software projects like
+        learning a new language, pursuing an athletic goal, exploring a new country, or DJing.
       </p>
       <p className="new-paragraph mb-4">Ongoing:</p>
       <div>

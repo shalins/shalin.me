@@ -46,7 +46,7 @@ export function TableOfContents({ source }: TableOfContentsProps) {
   if (headings.length === 0) return null;
 
   return (
-    <nav className="toc mb-8 pt-2 bg-neutral-100">
+    <nav className="toc mb-8 pt-2">
       <h2 className="text-lg font-medium mb-2">table of contents</h2>
       <ul className="space-y-1">
         {headings.map((heading) => (

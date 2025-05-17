@@ -12,6 +12,10 @@ interface MDXPageProps {
 }
 
 export function MDXPage({ content, metadata, slug, type = "article", urlPrefix }: MDXPageProps) {
+  // Check if this is an /atalier or /writings post
+  const isAtalierPost = urlPrefix === "/atalier";
+  const isWritingsPost = urlPrefix === "/writings";
+
   return (
     <section>
       <script
@@ -39,12 +43,16 @@ export function MDXPage({ content, metadata, slug, type = "article", urlPrefix }
       <h1 className="title text-3xl tracking-tighter">
         {metadata.title}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600">
-          {metadata.publishedAt}
-        </p>
-      </div>
-      <TableOfContents source={content} />
+      {/* Only show date for writings posts */}
+      {isWritingsPost ? (
+        <div className="flex justify-between items-center mt-2 mb-8 text-sm">
+          <p className="text-sm text-neutral-600">
+            {metadata.publishedAt}
+          </p>
+        </div>
+      ) : null}
+      {/* Only show table of contents for writings posts */}
+      {isWritingsPost ? <TableOfContents source={content} /> : null}
       <article className="prose">
         <CustomMDX source={content} />
       </article>
