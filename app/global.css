@@ -325,3 +325,44 @@ p.new-paragraph::before {
 .toc li:hover a.toc-link {
   @apply text-neutral-900;
 }
+
+.hyphen-list {
+  list-style: none;
+  padding-left: 0.75rem;
+}
+.hyphen-list li {
+  position: relative;
+  margin-bottom: 0.5rem;
+  padding-left: 0.75em;
+}
+.hyphen-list li::before {
+  content: "- ";
+  position: absolute;
+  left: 0;
+  color: inherit;
+}
+.hyphen-list ul {
+  list-style: none;
+  padding-left: 0.75rem;
+}
+.hyphen-list ul li::before {
+  content: "- ";
+}
+
+@media (max-width: 640px) {
+  p {
+    position: relative;
+  }
+  p.new-paragraph::before {
+    left: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  p {
+    padding-left: 0;
+  }
+  p.new-paragraph::before {
+    display: none;
+  }
+}

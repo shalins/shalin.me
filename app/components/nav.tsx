@@ -10,6 +10,9 @@ const navItems = {
   "/atalier": {
     name: "l'atalier",
   },
+  "/beliefs": {
+    name: "beliefs",
+  },
 };
 
 export function Navbar() {
