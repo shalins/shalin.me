@@ -14,7 +14,10 @@ const nextConfig = {
   },
   experimental: {
     outputFileTracingExcludes: {
-      'app/rss/route.js': ['.next/cache/**', 'node_modules/**'],
+      'app/rss/route.js': ['.next/cache/**', 'node_modules/**', '.git/**'],
+      'app/writings/[slug]/page.js': ['.next/cache/**', 'node_modules/**', '.git/**'],
+      'app/atalier/[slug]/page.js': ['.next/cache/**', 'node_modules/**', '.git/**'],
+      '*': ['.git/**'],
     },
   },
 }
