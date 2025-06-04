@@ -39,7 +39,7 @@ export default function PreviewWrapper({
       rel="noopener noreferrer"
       className={`${baseWrapperStyle} rich-link no-underline group`}
     >
-      <div className="border-b bg-[#F7F0DD] px-4 py-1 flex items-center gap-2 group-hover:border-red-500">
+      <div className="border-b border-sky-500 bg-[#F7F0DD] px-4 py-1 flex items-center gap-2 group-hover:border-red-500 transition-colors duration-100">
         {icon}
         <span className="text-sm text-gray-600">{header}</span>
       </div>

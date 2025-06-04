@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faAt } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
@@ -11,10 +11,21 @@ export default function Socials() {
           className="social flex items-center"
           rel="noopener noreferrer"
           target="_blank"
-          href="mailto:shalinvs@gmail.com"
+          href="https://linkedin.com/in/shalins"
         >
-          <FontAwesomeIcon className="h-4 w-4" icon={faAt} />
-          <p className="ml-2 h-7">shalinvs</p>
+          <FontAwesomeIcon className="h-4 w-4" icon={faLinkedin} />
+          <p className="ml-2 h-7">in/shalins</p>
+        </a>
+      </li>
+      <li>
+        <a
+          className="social flex items-center"
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://x.com/_shalinshah_"
+        >
+          <FontAwesomeIcon className="h-4 w-4" icon={faXTwitter} />
+          <p className="ml-2 h-7">x/_shalinshah_</p>
         </a>
       </li>
       <li>
@@ -33,10 +44,10 @@ export default function Socials() {
           className="social flex items-center"
           rel="noopener noreferrer"
           target="_blank"
-          href="https://linkedin.com/in/shalins"
+          href="mailto:shalinvs@gmail.com"
         >
-          <FontAwesomeIcon className="h-4 w-4" icon={faLinkedin} />
-          <p className="ml-2 h-7">in/shalins</p>
+          <FontAwesomeIcon className="h-4 w-4" icon={faAt} />
+          <p className="ml-2 h-7">shalinvs</p>
         </a>
       </li>
     </ul>

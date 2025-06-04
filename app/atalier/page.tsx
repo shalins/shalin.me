@@ -37,18 +37,22 @@ export default function Atalier() {
     {
       name: "Raspresso",
       description: "Software-driven espresso machine built from scratch",
+      link: "/atalier/raspresso",
     },
     {
       name: "Close",
       description: "One of the first real-time COVID dashboards",
+      link: "/atalier/close",
     },
     {
       name: "Droptop",
       description: "Full video editing suite for making funny content",
+      link: "/atalier/droptop",
     },
     {
       name: "BlueTune",
       description: "Stream music to a friends phone over bluetooth",
+      link: "/atalier/bluetune",
     },
     {
       name: "MiddleSchoolNotes",
@@ -100,7 +104,7 @@ export default function Atalier() {
       </div>
       <br />
       <p className="mb-4">
-        ... And many, many others that now rest in the graveyard.
+        ... and many, <i>many</i> others that now rest in the graveyard.
       </p>
     </section>
   );

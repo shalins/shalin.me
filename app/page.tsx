@@ -12,67 +12,51 @@ export default function Page() {
         then did.
       </p>
       <p className="mb-4">
-        I'm on a journey to learn how to do life's work and pursue ambitious
+        I'm on a journey to do my life's work and pursue ambitious
         projects -- and I hope that after a lifetime of earnest effort, I too
         can one day leave my mark in the fabric of consciousness.
       </p>
       <p className="new-paragraph mb-4">
-        Today, I'm helping lead the perception team at a small startup called{" "}
-        <a
-          href="https://maticrobots.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Matic
-        </a>
-        , where we build autonomous robots with cameras. In my three years, I've
-        been lucky enough to build multiple core parts of our autonomy and
-        software stack, and now spend my time writing machine learning
-        algorithms.
+        Today, I'm building a company to completely reimagine healthcare. 
       </p>
-      <p className="mb-4">
-        I've also dedicated the past 2+ years conducting research at U.C.
-        Berkeley to{" "}
+      <p>
+        Before that, I
+        was early at <a
+            href="https://maticrobots.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+          Matic Robots
+        </a>, where I led the autonomy team, and built many core parts of the company.
+        I also pursued two projects on the side: research at{" "}
         <a
-          href="https://compo-net.org"
+          href="https://pilawa-group.berkeley.edu/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          survey passive components at a massive scale
-        </a>{" "}
-        for designing power converter circuit topologies, and crafting a{" "}
+          U.C. Berkeley
+        </a> to survey passive electrical components at a massive scale, called{" "}
         <a
-          href="https://spacebar.build"
+          href="/atalier/componet"
           target="_blank"
           rel="noopener noreferrer"
         >
-          browser-based 3D virtual world called Spacebar
-        </a>
-        , which fuses art, physics, and cutting-edge web technology to create
-        the immersive feeling of working together in person.
+          CompoNet
+        </a>, and a browser-based 3D virtual world called{" "}
+        <a
+          href="/atalier/spacebar"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Spacebar
+        </a>.
       </p>
       <p className="new-paragraph mb-4">
-        Recently I taught myself French and spent over two months living in{" "}
-        <a
-          href="https://en.wikipedia.org/wiki/Tr%C3%A8ves,_Gard"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Trèves, France
-        </a>{" "}
-        with a family of five. These days, I’m exploring{" "}
-        <a
-          href="https://www.youtube.com/watch?v=zDzlGxO7kTA&list=PLfpd_CBSTJoyq6DrGycT3xyalNhiVpfQg"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          the world of DJing
-        </a>{" "}
-        and delving deeper into music theory.
+        In a past life, I taught myself French and spent three months living in Trèves, France with a family of five. I drove 6000 miles across the U.S., where I read all 66 books of the Bible on audio and met people from all walks of life.
       </p>
       <p className="mb-4">
-        In a past life, I studied EE/CS at U.C. Berkeley for 3 years, and spent
-        two gap semesters building lots of products with my smartest friends.
+        I studied EE/CS at U.C. Berkeley for 3 years, and dropped out twice to build lots of 
+        products with my smartest friends, before ultimately completing my degree.
       </p>
       <Socials />
     </div>

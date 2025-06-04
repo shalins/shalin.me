@@ -69,63 +69,86 @@ export default function AudioPlayer({ src, title }: AudioPlayerProps) {
     setIsPlaying(!isPlaying);
   };
 
-  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    updateTimeFromEvent(e);
-  };
-
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    setIsDragging(true);
-    updateTimeFromEvent(e);
-    
-    // Add event listeners for dragging
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-  };
-
-  const handleMouseMove = (e: MouseEvent) => {
-    if (isDragging) {
-      updateTimeFromMouseEvent(e);
-    }
-  };
-  
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    document.removeEventListener('mousemove', handleMouseMove);
-    document.removeEventListener('mouseup', handleMouseUp);
-  };
-
-  const updateTimeFromEvent = (e: React.MouseEvent<HTMLDivElement>) => {
-    const audio = audioRef.current;
-    const container = progressContainerRef.current;
-    if (!audio || !container) return;
-
-    const rect = container.getBoundingClientRect();
-    const clickPosition = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
-    audio.currentTime = clickPosition * audio.duration;
-    
-    // Update progress immediately for smoother UX
-    setProgress(clickPosition * 100);
-    setCurrentTime(formatTime(audio.currentTime));
-  };
-  
-  const updateTimeFromMouseEvent = (e: MouseEvent) => {
-    const audio = audioRef.current;
-    const container = progressContainerRef.current;
-    if (!audio || !container) return;
-
-    const rect = container.getBoundingClientRect();
-    const clickPosition = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
-    audio.currentTime = clickPosition * audio.duration;
-    
-    // Update progress immediately for smoother UX
-    setProgress(clickPosition * 100);
-    setCurrentTime(formatTime(audio.currentTime));
-  };
-  
+  // Format time helper
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  };
+
+  // Get position as a percentage based on x coordinate
+  const getPositionFromX = (clientX: number) => {
+    const container = progressContainerRef.current;
+    if (!container) return 0;
+    
+    const rect = container.getBoundingClientRect();
+    return Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1) * 100;
+  };
+
+  // Handle regular click on the progress bar
+  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Don't handle clicks if we're dragging
+    if (isDragging) return;
+    
+    const pos = getPositionFromX(e.clientX);
+    const audio = audioRef.current;
+    
+    if (audio) {
+      audio.currentTime = (pos / 100) * audio.duration;
+      setProgress(pos);
+      setCurrentTime(formatTime((pos / 100) * audio.duration));
+    }
+  };
+
+  // Handle mouse down to start dragging
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    
+    const pos = getPositionFromX(e.clientX);
+    const audio = audioRef.current;
+    
+    // Update display immediately
+    setProgress(pos);
+    if (audio) {
+      setCurrentTime(formatTime((pos / 100) * audio.duration));
+    }
+    
+    // Set dragging state
+    setIsDragging(true);
+    
+    // Add the event listeners to handle drag and release
+    document.addEventListener('mousemove', handleDrag);
+    document.addEventListener('mouseup', handleDragEnd);
+  };
+
+  // Handle drag (mousemove)
+  const handleDrag = (e: MouseEvent) => {
+    const pos = getPositionFromX(e.clientX);
+    const audio = audioRef.current;
+    
+    // Update display immediately
+    setProgress(pos);
+    if (audio) {
+      setCurrentTime(formatTime((pos / 100) * audio.duration));
+    }
+  };
+
+  // Handle drag end (mouseup)
+  const handleDragEnd = (e: MouseEvent) => {
+    const pos = getPositionFromX(e.clientX);
+    const audio = audioRef.current;
+    
+    // Update audio position
+    if (audio) {
+      audio.currentTime = (pos / 100) * audio.duration;
+    }
+    
+    // Reset state
+    setIsDragging(false);
+    
+    // Clean up event listeners
+    document.removeEventListener('mousemove', handleDrag);
+    document.removeEventListener('mouseup', handleDragEnd);
   };
 
   const handlePlaybackRateChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -138,8 +161,8 @@ export default function AudioPlayer({ src, title }: AudioPlayerProps) {
   };
 
   return (
-    <div className="block border border-sky-500 overflow-hidden my-2 bg-[#F7F0DD]">
-      <div className="border-b border-sky-500 bg-[#F7F0DD] px-4 py-1 flex items-center gap-3">
+    <div className="block border border-sky-500 overflow-hidden my-2 bg-[#F7F0DD] relative border-b-8 border-sky-500 hover:border-b-8 hover:border-red-500 transition-all duration-100 ease-in-out group">
+      <div className="border-b border-sky-500 bg-[#F7F0DD] px-4 py-1 flex items-center gap-3 group-hover:border-red-500 transition-colors duration-100">
         <FontAwesomeIcon icon={faVolumeHigh} className="text-gray-600" />
         <span className="text-sm text-gray-600">{title || "Audio"}</span>
       </div>
@@ -167,7 +190,7 @@ export default function AudioPlayer({ src, title }: AudioPlayerProps) {
             ref={progressContainerRef}
             onClick={handleProgressClick}
             onMouseDown={handleMouseDown}
-            className="col-span-14 relative h-8 flex items-center group"
+            className="col-span-14 relative h-8 flex items-center group cursor-pointer"
             role="slider"
             aria-valuemin={0}
             aria-valuemax={100}
@@ -203,7 +226,7 @@ export default function AudioPlayer({ src, title }: AudioPlayerProps) {
           <select 
             value={playbackRate}
             onChange={handlePlaybackRateChange}
-            className="col-span-4 bg-transparent border border-sky-500 text-gray-600 px-2 py-1 text-sm cursor-pointer"
+            className="col-span-4 bg-transparent border border-sky-500 text-gray-600 px-2 py-1 text-sm cursor-pointer hover:border-red-500 focus:border-red-500"
           >
             <option value="0.5">0.5x</option>
             <option value="1">1x</option>

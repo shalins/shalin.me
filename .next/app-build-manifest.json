@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/writings/[slug]/page": [
+    "/atalier/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/writings/[slug]/page.js"
+      "static/chunks/app/atalier/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -16,16 +16,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/writings/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/writings/page.js"
-    ],
-    "/atalier/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/atalier/page.js"
-    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -35,6 +25,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/atalier/[slug]/page.js"
+    ],
+    "/writings/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/writings/page.js"
+    ],
+    "/writings/[slug]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/writings/[slug]/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

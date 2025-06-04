@@ -23,6 +23,12 @@ const AudioPlayer = dynamic(() => import('./audio-player'), {
   ssr: false
 });
 
+// Import the VideoPlayer component
+const VideoPlayer = dynamic(() => import('./video-player'), {
+  loading: () => <div className="block border overflow-hidden my-2 bg-[#F7F0DD] animate-pulse h-32" />,
+  ssr: false
+});
+
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
     <th key={index}>{header}</th>
@@ -58,12 +64,20 @@ function CustomLink(props) {
   }
 
   // Check if this link should be rendered as a preview
-  if (props.title === 'preview') {
+  if (props.title === 'preview' || props.title?.startsWith('preview:')) {
     const LinkPreview = dynamic(() => import('./preview/link-preview'), {
       loading: () => <div className="block border overflow-hidden my-2 bg-[#F7F0DD] animate-pulse h-32" />,
       ssr: false
     });
-    return <LinkPreview url={href} />;
+    
+    // Check if we have a custom image specified in the title
+    // Format: "preview:https://example.com/image.jpg"
+    let customImage;
+    if (props.title?.startsWith('preview:')) {
+      customImage = props.title.split('preview:')[1].trim();
+    }
+    
+    return <LinkPreview url={href} customImage={customImage} />;
   }
 
   if (href.startsWith("/")) {
@@ -146,6 +160,7 @@ let components = {
   strong: ({ children }) => <strong style={{ fontFamily: 'SpaceMono-Bold, monospace' }}>{children}</strong>,
   ImageGallery,
   AudioPlayer,
+  VideoPlayer,
 };
 
 export function CustomMDX(props) {

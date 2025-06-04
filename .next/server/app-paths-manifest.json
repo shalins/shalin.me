@@ -1,8 +1,5 @@
 {
-  "/writings/[slug]/page": "app/writings/[slug]/page.js",
-  "/writings/page": "app/writings/page.js",
   "/atalier/page": "app/atalier/page.js",
   "/atalier/[slug]/page": "app/atalier/[slug]/page.js",
-  "/api/metadata/route": "app/api/metadata/route.js",
   "/page": "app/page.js"
 }
