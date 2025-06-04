@@ -4,29 +4,29 @@ const beliefs = [
   {
     title: "constraints force you to be creative",
     points: [
-      "necessity breeds innovation—many groundbreaking ideas emerge from limitations.",
-      "scarcity forces prioritization, removing distractions and bullshit.",
-      "the most elegant solutions often arise from tight constraints (e.g., haikus, minimalist design).",
+      "necessity breeds innovation—many groundbreaking ideas emerge from limitations",
+      "scarcity forces prioritization, removing distractions and bullshit",
+      "the most elegant solutions often arise from tight constraints (e.g., haikus, minimalist design)",
     ],
   },
   {
-    title: "both sides of paradoxes can both be true in different contexts",
+    title: "both sides of paradoxes can be true in different contexts",
     points: [
-      "the wave-particle duality in physics: light behaves as both a wave and a particle depending on how it's measured.",
-      "in leadership, strong conviction is necessary, but so is adaptability—rigidity and flexibility both have their place.",
+      "the wave-particle duality in physics: light behaves as both a wave and a particle depending on how it's measured",
+      "in leadership, strong conviction is necessary, but so is adaptability—rigidity and flexibility both have their place",
     ],
   },
   {
     title: "fundamentals are underrated",
     points: [
-      "complex strategies fail without a strong foundation (e.g., fancy plays don't work if you can't dribble).",
-      "most breakthroughs come from rethinking from first principles, not adding complexity.",
+      "complex strategies fail without a strong foundation (e.g., fancy plays don't work if you can't dribble)",
+      "most breakthroughs come from rethinking from first principles, not adding complexity",
     ],
   },
   {
     title: "wealth is proportional to value created in laissez-faire capitalism",
     points: [
-      "do hard things. most people can't, so there's an outsized opportunity to create value.",
+      "do hard things. most people can't, so there's an outsized opportunity to create value",
       "wealth accumulates when important problems are solved at scale",
       "market inefficiencies reward those who see what others ignore",
       "competence, high risk tolerance, and leverage dictate earnings more than effort alone",
@@ -53,29 +53,29 @@ const beliefs = [
     title: "true honesty risks being offensive",
     points: [
       "the alternative to honesty is passive dishonesty",
-      "churchill was ridiculed for warning about Hitler's rise before WWII, Galileo was condemned by the Church for stating that the Earth orbits the sun, Socrates was executed for 'corrupting the youth'",
+      "Churchill was ridiculed for warning about Hitler's rise before WWII, Galileo was condemned by the Church for stating that the Earth orbits the sun, Socrates was executed for 'corrupting the youth'",
       "free speech dies when fear of offense outweighs the pursuit of truth",
     ],
   },
   {
     title: "better to be loved/hated than liked/ignored",
     points: [
-      "strong emotions drive action; indifference means irrelevance.",
-      "most impactful people polarize—leaders, artists, innovators all have passionate supporters and critics.",
-      "trying to please everyone dilutes authenticity, leading to mediocrity.",
+      "strong emotions drive action; indifference means irrelevance",
+      "most impactful people polarize—leaders, artists, innovators all have passionate supporters and critics",
+      "trying to please everyone dilutes authenticity, leading to mediocrity",
     ],
   },
   {
     title: "every line of code acts against you",
     points: [
-      "more code means more potential failure points—bugs, maintenance, unintended consequences.",
-      "code is a liability, not an asset; the easiest code maintain is the code that doesn't exist.",
+      "more code means more potential failure points—bugs, maintenance, unintended consequences",
+      "code is a liability, not an asset; the easiest code to maintain is the code that doesn't exist",
     ],
   },
   {
     title: "simpler solutions are harder to build than complex ones",
     points: [
-      "simplicity requires deep understanding; complexity often masks confusion.",
+      "simplicity requires deep understanding; complexity often masks confusion",
     ],
   },
   {
@@ -83,7 +83,7 @@ const beliefs = [
     points: [
       '"give me a lever long enough and a fulcrum on which to place it, and I shall move the world"',
       "lots of resources misapplied can still lead to no leverage",
-      "large organizations often waste massive resources due to inefficiency, while small teams with leverage can outcompete them.",
+      "large organizations often waste massive resources due to inefficiency, while small teams with leverage can outcompete them",
     ],
   },
 ];
