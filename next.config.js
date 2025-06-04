@@ -12,6 +12,11 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    outputFileTracingExcludes: {
+      'app/rss/route.js': ['.next/cache/**', 'node_modules/**'],
+    },
+  },
 }
 
 module.exports = nextConfig 
