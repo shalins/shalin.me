@@ -17,7 +17,7 @@ export default function Page() {
         can one day leave my mark in the fabric of consciousness.
       </p>
       <p className="new-paragraph mb-4">
-        Today, I'm building a company to completely reimagine healthcare. 
+        Today, I'm building a company to accelerate human intelligence. 
       </p>
       <p>
         Before that, I
