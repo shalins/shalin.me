@@ -1,4 +1,28 @@
+// Bookmac (personal research workbench) lives at /bookmac, proxied from its
+// own Vercel deployment. It is private-ish: never indexed by search engines.
+const BOOKMAC = 'https://bookmac-mocha.vercel.app'
+
 const nextConfig = {
+  async redirects() {
+    // The app uses relative asset paths, so it must be served from /bookmac/.
+    return [{ source: '/bookmac', destination: '/bookmac/', permanent: true }]
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        { source: '/bookmac/', destination: `${BOOKMAC}/` },
+        { source: '/bookmac/:path*', destination: `${BOOKMAC}/:path*` },
+      ],
+    }
+  },
+  async headers() {
+    return [
+      {
+        source: '/bookmac/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' }],
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: '**' },
