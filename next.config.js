@@ -3,16 +3,12 @@
 const BOOKMAC = 'https://bookmac-mocha.vercel.app'
 
 const nextConfig = {
-  // Let /bookmac/ keep its trailing slash (its assets are relative).
+  // Serve /bookmac and /bookmac/ alike.
   skipTrailingSlashRedirect: true,
-  async redirects() {
-    // The app uses relative asset paths, so it must be served from /bookmac/.
-    return [{ source: '/bookmac', destination: '/bookmac/', permanent: true }]
-  },
   async rewrites() {
     return {
       beforeFiles: [
-        { source: '/bookmac/', destination: `${BOOKMAC}/` },
+        { source: '/bookmac', destination: `${BOOKMAC}/` },
         { source: '/bookmac/:path*', destination: `${BOOKMAC}/:path*` },
       ],
     }
